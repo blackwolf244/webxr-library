@@ -111,7 +111,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 4. Start the Dev-Server
    ```sh
-   npm run serve
+   npm run dev
    ```
 
 <!-- USAGE EXAMPLES -->
