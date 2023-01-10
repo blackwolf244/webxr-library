@@ -76,15 +76,11 @@ WebXR, or Extended Reality on the Web, has seen rapid growth and development in 
 
 Through a comprehensive review of literature, analysis of existing research, and the development of prototypes, this thesis aims to provide an in-depth evaluation of WebXR, its use, and its role in our future.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Built With
 
 - <a href="https://vuejs.org/"><strong>Vue.js</strong></a>
 - <a href="https://immersiveweb.dev/"><strong>WebXR</strong></a>
 - <a href="https://aframe.io/"><strong>A-Frame</strong></a>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
@@ -118,8 +114,6 @@ This is an example of how to list things you need to use the software and how to
    npm run serve
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- USAGE EXAMPLES -->
 
 ## Usage
@@ -138,8 +132,6 @@ This Project is supposed to show my findings in the field while being split into
 
 > Prototypes to represent issues and if possible Fix them.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- ROADMAP -->
 
 ## Roadmap
@@ -149,8 +141,6 @@ This Project is supposed to show my findings in the field while being split into
 - [ ] Add "components" document to easily copy & paste sections of the readme
 
 See the [open issues](https://mygit.th-deg.de/sk20808/webxr-library/-/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 
