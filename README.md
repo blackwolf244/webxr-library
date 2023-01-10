@@ -80,9 +80,9 @@ Through a comprehensive review of literature, analysis of existing research, and
 
 ### Built With
 
-- [![Vue][vue.js]][https://vuejs.org/]
-- [![WebXR][https://immersiveweb.dev/]][https://immersiveweb.dev/]
-- [![A-Frame][https://aframe.io/]][https://aframe.io/]
+- <a href="https://vuejs.org/"><strong>Vue.js</strong></a>
+- <a href="https://immersiveweb.dev/"><strong>WebXR</strong></a>
+- <a href="https://aframe.io/"><strong>A-Frame</strong></a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
