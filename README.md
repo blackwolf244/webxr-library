@@ -1,92 +1,161 @@
-# WebXR-Library
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 
+<a name="readme-top"></a>
 
+<!--
+*** Thanks for checking out the Best-README-Template. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-## Getting started
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+<!-- PROJECT LOGO -->
+<br />
+<div align="left">
+  <a href="https://mygit.th-deg.de/sk20808/webxr-library">
+    <img src="src/assets/WL-B.svg" alt="Logo" height="80">
+  </a>
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+  <h3 align="left">WebXR-Library</h3>
 
-## Add your files
+  <p align="left">
+    A representation of my endevours to explore the Development of the WebXR API including it's Frameworks and currrent Issues.
+    <br />
+    <a href="https://mygit.th-deg.de/sk20808/webxr-library/-/wikis/home"><strong>Explore the docs »</strong></a>
+    <br />
+    <a href="https://webxr-library.web.app/">Check out the Website</a>
+    ·
+    <a href="https://mygit.th-deg.de/sk20808/webxr-library/-/issues">Report Bug</a>
+    ·
+    <a href="https://mygit.th-deg.de/sk20808/webxr-library/-/issues">Request Feature</a>
+  </p>
+</div>
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
 
-```
-cd existing_repo
-git remote add origin https://mygit.th-deg.de/sk20808/webxr-library.git
-git branch -M main
-git push -uf origin main
-```
+<!-- ABOUT THE PROJECT -->
 
-## Integrate with your tools
+## About The Project
 
-- [ ] [Set up project integrations](https://mygit.th-deg.de/sk20808/webxr-library/-/settings/integrations)
+<a href="https://mygit.th-deg.de/sk20808/webxr-library">
+    <img src="images/Screenshot 2023-01-10 115751.png" alt="Logo" width="100%">
+  </a>
 
-## Collaborate with your team
+WebXR, or Extended Reality on the Web, has seen rapid growth and development in recent years, with significant potential to impact industries and applications. In this thesis, we explore the current state of WebXR technology, examining its key challenges and opportunities, while investigating its potential future developments and implications for society and industry.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Through a comprehensive review of literature, analysis of existing research, and the development of prototypes, this thesis aims to provide an in-depth evaluation of WebXR, its use, and its role in our future.
 
-## Test and Deploy
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Use the built-in continuous integration in GitLab.
+### Built With
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+- [![Vue][vue.js]][https://vuejs.org/]
+- [![WebXR][https://immersiveweb.dev/]][https://immersiveweb.dev/]
+- [![A-Frame][https://aframe.io/]][https://aframe.io/]
 
-***
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# Editing this README
+<!-- GETTING STARTED -->
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## Getting Started
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### Prerequisites
 
-## Name
-Choose a self-explaining name for your project.
+This is an example of how to list things you need to use the software and how to install them.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### Installation
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+1. Clone the repository
+   ```sh
+   git clone https://mygit.th-deg.de/sk20808/webxr-library.git
+   ```
+2. navigate into the repository
+   ```sh
+   cd webxr-library
+   ```
+3. Install NPM packages
+   ```sh
+   npm i
+   ```
+4. Start the Dev-Server
+   ```sh
+   npm run serve
+   ```
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+This Project is supposed to show my findings in the field while being split into three Parts,
+
+### Frameworks:
+
+> This is used to determine the Functions and Usage-Possibilities for different Frameworks
+
+### Issues:
+
+> Problems sourrounding the XR API
+
+### Experiments:
+
+> Prototypes to represent issues and if possible Fix them.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ROADMAP -->
 
 ## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+- [x] Add Changelog
+- [x] Add back to top links
+- [ ] Add "components" document to easily copy & paste sections of the readme
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+See the [open issues](https://mygit.th-deg.de/sk20808/webxr-library/-/issues) for a full list of proposed features (and known issues).
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+<!-- LICENSE -->
 
 ## License
-For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
