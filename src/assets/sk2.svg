@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="200" viewBox="0 0 500 200">
+  <g>
+    <g>
+      <rect width="241" height="81" x="35" y="93" fill="rgb(0,0,0)"/>
+      <text font-size="0" style="white-space:pre">
+        <tspan x="43" y="159" fill="rgb(248,248,248)" font-family="Leelawadee UI" font-size="75" font-weight="400" style="white-space:pre;text-transform:uppercase" letter-spacing="19.759">K</tspan>
+      </text>
+      <text font-size="0" style="white-space:pre">
+        <tspan x="100" y="159" fill="rgb(248,248,248)" font-family="Leelawadee UI" font-size="75" font-weight="400" style="white-space:pre;text-transform:uppercase" letter-spacing="19.759">E</tspan>
+      </text>
+      <text font-size="0" style="white-space:pre">
+        <tspan x="155" y="159" fill="rgb(248,248,248)" font-family="Leelawadee UI" font-size="75" font-weight="400" style="white-space:pre;text-transform:uppercase" letter-spacing="19.759">R</tspan>
+      </text>
+      <text font-size="0" style="white-space:pre">
+        <tspan x="210" y="161" fill="rgb(248,248,248)" font-family="Leelawadee UI" font-size="75" font-weight="400" style="white-space:pre;text-transform:uppercase" letter-spacing="19.759">N</tspan>
+      </text>
+    </g>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="44" y="86" fill="rgb(0,0,0)" font-family="Segoe UI Semibold" font-size="75" font-weight="600" style="white-space:pre;text-transform:uppercase" letter-spacing="14.707">Stefan</tspan>
+    </text>
+  </g>
+</svg>

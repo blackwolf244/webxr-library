@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <style>
+    text {
+      fill: black;
+    }
+    rect {
+      fill: black;
+    }
+    @media (prefers-color-scheme: dark) {
+      text {
+        fill: white;
+      }
+      rect {
+        fill: white;
+    }
+    }
+  </style>
+  <g>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="21" y="336" font-family="Leelawadee UI" font-size="245" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="24.896">WL</tspan>
+    </text>
+    <rect width="8" height="226" x="448" y="137"/>
+  </g>
+</svg>

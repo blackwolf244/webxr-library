@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="464" height="89" viewBox="0 0 464 89">
+  <style>
+    text {
+      fill: black;
+    }
+    rect {
+      fill: black;
+    }
+    <!-- @media (prefers-color-scheme: dark) {
+      text {
+        fill: white;
+      }
+      rect {
+        fill: white;
+    }
+    } -->
+  </style>
+  <g>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="0" y="72" font-family="Leelawadee UI" font-size="80" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="2.73">WL</tspan>
+    </text>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="149" y="37" font-family="Leelawadee UI" font-size="35" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="24.279">webxr</tspan>
+    </text>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="155" y="76" font-family="Leelawadee UI" font-size="35" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="22.48">L</tspan>
+    </text>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="210" y="76" font-family="Leelawadee UI" font-size="35" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="22.48">I</tspan>
+    </text>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="251" y="76" font-family="Leelawadee UI" font-size="35" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="22.48">B</tspan>
+    </text>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="298" y="76" font-family="Leelawadee UI" font-size="35" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="22.48">R</tspan>
+    </text>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="344" y="76" font-family="Leelawadee UI" font-size="35" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="22.48">A</tspan>
+    </text>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="389" y="76" font-family="Leelawadee UI" font-size="35" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="22.48">R</tspan>
+    </text>
+    <text font-size="0" style="white-space:pre">
+      <tspan x="432" y="76" font-family="Leelawadee UI" font-size="35" font-weight="700" style="white-space:pre;text-transform:uppercase" letter-spacing="22.48">Y</tspan>
+    </text>
+    <rect width="1" height="72" x="134" y="8"/>
+  </g>
+</svg>
