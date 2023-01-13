@@ -2,11 +2,31 @@
   <div class="content">
     <div class="left">
       <a-scene embedded>
-        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" />
-        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" />
-        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D" />
-        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" />
-        <a-sky color="#ECECEC" />
+        <a-assets>
+          <img id="groundTexture" crossorigin="anonymous" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+          <img id="skyTexture" crossorigin="anonymous" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+        </a-assets>
+
+        <a-entity id="lightSphere" geometry="primitive: sphere; radius: 0.5" material="color: #FFF; shader: flat"
+          light="type: point"
+          animation="property: position; dir: alternate; loop: true; to: 4 2 -9; from: -4 2 -9"></a-entity>
+
+        <a-entity geometry="primitive: box" material="color: red" position="0 0.5 -10"></a-entity>
+        <a-entity geometry="primitive: box" material="color: orange" position="-2 0.5 -8"></a-entity>
+        <a-entity geometry="primitive: box" material="color: yellow" position="2 0.5 -8"></a-entity>
+        <a-entity geometry="primitive: box" material="color: green" position="-4 0.5 -6"></a-entity>
+        <a-entity geometry="primitive: box" material="color: blue" position="4 0.5 -6"></a-entity>
+
+        <a-entity id="sky" geometry="primitive: sphere; thetaLength: 90; radius: 30"
+          material="side: back; height: 2048; width: 2048; src: #skyTexture; shader: flat"></a-entity>
+
+        <a-entity light="type: ambient; color: #222"></a-entity>
+        <a-entity light="type: directional; color: #111" position="-1 1 0"></a-entity>
+
+        <a-entity id="ground" geometry="primitive: plane; height: 100; width: 100" material="src: #groundTexture"
+          rotation="-90 0 0"></a-entity>
+
+        <a-entity id="text" text="value: Show us the light!; color: #BBB" position="2.5 2 -8" scale="8 8 8"></a-entity>
       </a-scene>
     </div>
   </div>

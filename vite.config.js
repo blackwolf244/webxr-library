@@ -8,7 +8,9 @@ export default defineConfig({
       template: {
         compilerOptions: {
           isCustomElement: (tag) =>
-            tag.startsWith("a-") || tag.startsWith("ion-"),
+            tag.startsWith("a-") ||
+            tag.startsWith("ion-") ||
+            tag.startsWith("aframe"),
         },
       },
     }),

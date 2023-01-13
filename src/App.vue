@@ -1,6 +1,5 @@
 <script>
 import Footer from "./components/Footer.vue";
-import "aframe";
 
 export default {
   name: 'App',
@@ -11,7 +10,6 @@ export default {
     onClick() {
       const navLinks = document.querySelector(".nav-links")
       navLinks.classList.toggle('mobile-menu')
-      console.log("meow")
     }
   },
 }
@@ -183,6 +181,7 @@ main {
 
   .nav-links {
     position: absolute;
+    z-index: 9;
     background-color: rgba(228, 228, 228, 0.884);
     backdrop-filter: blur(2px);
     top: 0;

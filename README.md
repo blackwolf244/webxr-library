@@ -33,8 +33,8 @@
     <br />
     <a href="https://mygit.th-deg.de/sk20808/webxr-library/-/wikis/home"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://webxr-library.web.app/">Check out the Website</a>
-    ·
+    <a href="https://webxr-library.web.app/"><strong>Check out the Website »</strong></a>
+    <br />
     <a href="https://mygit.th-deg.de/sk20808/webxr-library/-/issues">Report Bug</a>
     ·
     <a href="https://mygit.th-deg.de/sk20808/webxr-library/-/issues">Request Feature</a>
@@ -137,7 +137,6 @@ This Project is supposed to show my findings in the field while being split into
 ## Roadmap
 
 - [x] Add Changelog
-- [x] Add back to top links
 - [ ] Add "components" document to easily copy & paste sections of the readme
 
 See the [open issues](https://mygit.th-deg.de/sk20808/webxr-library/-/issues) for a full list of proposed features (and known issues).
