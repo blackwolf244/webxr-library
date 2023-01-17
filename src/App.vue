@@ -56,9 +56,11 @@ header {
 
 .logo img {
   width: 85%;
+
 }
 
 .logo {
+  z-index: 5;
   line-height: 0;
 }
 
@@ -70,6 +72,7 @@ header {
 }
 
 .navbar {
+
   padding: 0px 0px;
   display: flex;
   justify-content: space-between;
@@ -97,7 +100,6 @@ header {
 .navbar li {
   display: flex;
   margin: 0 10px;
-  ;
   list-style: none;
   margin-bottom: 0;
 }
@@ -126,6 +128,7 @@ header {
 }
 
 .menu {
+  z-index: 5;
   display: none;
 }
 
@@ -180,8 +183,8 @@ main {
   }
 
   .nav-links {
+    z-index: 4;
     position: absolute;
-    z-index: 9;
     background-color: rgba(228, 228, 228, 0.884);
     backdrop-filter: blur(2px);
     top: 0;

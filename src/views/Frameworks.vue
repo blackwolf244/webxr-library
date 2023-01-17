@@ -19,7 +19,7 @@
     </div>
     <div class="info styled-scrollbars hidden" v-for="page in pages" :key="page.id" :id="page.title">
       <h2>{{ page.title }}</h2>
-      <p>{{ page.subtitle }}}}
+      <p>{{ page.subtitle }}
       </p>
       <p>>Get Started: <br /> <a target="_blank">{{ page.starter }}</a></p>
       <p>>Website: <br /> <a target="_blank">{{ page.website }}</a></p>
@@ -140,6 +140,12 @@ a:hover {
 }
 
 @media screen and (max-width: 900px) {
+
+  .celement a {
+    border-left: gray solid 3px;
+    font-size: 0.7rem;
+  }
+
   .celement {
     display: block;
   }
@@ -191,10 +197,10 @@ export default {
   data() {
     return {
       pages: [
-        { id: 1, title: 'A-Frame', subtitle: 'A FRAMEWORK THAT AIMS TO MAKE THE DEVELOPER EXPERIENCE AS SIMPLE AS POSSIBLE', starter: 'https://aframe.io/docs/1.3.0/introduction/', website: 'https://aframe.io/' },
-        { id: 2, title: 'WonderLand-Engine', subtitle: 'A FRAMEWORK THAT AIMS TO MAKE THE DEVELOPER EXPERIENCE AS SIMPLE AS POSSIBLE', starter: 'https://aframe.io/docs/1.3.0/introduction/', website: 'https://aframe.io/' },
-        { id: 3, title: 'Unity', subtitle: 'A FRAMEWORK THAT AIMS TO MAKE THE DEVELOPER EXPERIENCE AS SIMPLE AS POSSIBLE', starter: 'https://aframe.io/docs/1.3.0/introduction/', website: 'https://aframe.io/' },
-        { id: 3, title: 'WebXR-Threejs-AR', subtitle: 'A FRAMEWORK THAT AIMS TO MAKE THE DEVELOPER EXPERIENCE AS SIMPLE AS POSSIBLE', starter: 'https://aframe.io/docs/1.3.0/introduction/', website: 'https://aframe.io/' },
+        { id: 1, title: 'A-Frame', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', starter: 'https://aframe.io/docs/1.3.0/introduction/', website: 'https://aframe.io/' },
+        { id: 2, title: 'WonderLand-Engine', subtitle: 'Wonderland Engine is an open-source 3D engine built on A-Frame, allowing for the development of interactive and immersive VR and AR experiences with advanced features such as physics simulation, advanced lighting, and support for multiple input devices.', starter: 'https://wonderlandengine.com/getting-started/quick-start/', website: 'https://wonderlandengine.com/' },
+        { id: 3, title: 'Unity', subtitle: 'Unity is a cross-platform game engine used to create 2D, 3D, AR, and VR experiences. It has a built-in WebXR support which allows developers to create and publish WebXR experiences.', starter: 'https://learn.unity.com/course/create-with-vr', website: 'https://unity.com/' },
+        { id: 3, title: 'WebXR-Threejs-AR', subtitle: 'WebXR is a JavaScript API for creating immersive virtual reality (VR) and augmented reality (AR) experiences on the web. Three.js is a JavaScript library for creating and displaying 3D content on web browsers. When combined, the two technologies can be used to create immersive and interactive WebXR experiences.', starter: 'https://developers.google.com/ar/develop/webxr', website: 'https://immersiveweb.dev/' },
       ],
       window: {
         width: 0,
