@@ -32,9 +32,6 @@
   </div>
 </template>
 
-<script>
-</script>
-
 <style scoped>
 .content div {
   border: 1px solid black;

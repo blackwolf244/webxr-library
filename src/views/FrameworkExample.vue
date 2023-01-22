@@ -1,5 +1,6 @@
 <template>
   <h1>{{ $route.params.id }}</h1>
+  <p v-if="this.$route.params.id == 'WebXR-Threejs-AR'">Only available on AR-Compatiple Devices</p>
   <WebXRThreejsAR v-if="this.$route.params.id == 'WebXR-Threejs-AR'">
   </WebXRThreejsAR>
   <AFrame v-else-if="this.$route.params.id == 'A-Frame'"></AFrame>
@@ -12,7 +13,7 @@
   <h2 v-else>404</h2>
 </template>
 
-<script>
+<script scoped>
 import AFrame from './Examples/AFrame.vue'
 import WebXRThreejsAR from './Examples/WebXRThreejsAR.vue'
 export default {
@@ -21,7 +22,6 @@ export default {
     WebXRThreejsAR,
   },
 };
-
 </script>
 
 <style scoped>
@@ -36,5 +36,13 @@ export default {
   color: #fff;
   font-weight: 700;
   border: none
+}
+
+p {
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 </style>

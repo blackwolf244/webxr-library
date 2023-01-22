@@ -16,16 +16,31 @@ export default createRouter({
     },
     {
       path: "/frameworks/:id",
-      name: "Example",
-      component: () => import("../views/Example.vue"),
+      name: "FrameworkExample",
+      component: () => import("../views/FrameworkExample.vue"),
     },
     {
       path: "/issues",
       component: () => import("../views/Issues.vue"),
     },
     {
+      path: "/issues/:id/solution",
+      name: "Solution",
+      component: () => import("../views/Solution.vue"),
+    },
+    {
+      path: "/issues/:id/example",
+      name: "IssueExample",
+      component: () => import("../views/IssueExample.vue"),
+    },
+    {
       path: "/experiments",
       component: () => import("../views/Experiments.vue"),
+    },
+    {
+      path: "/experiments/:id",
+      name: "Experiments",
+      component: () => import("../views/Issues.vue"),
     },
   ],
 });

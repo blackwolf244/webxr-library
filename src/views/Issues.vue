@@ -3,7 +3,7 @@
     <div class="content styled-scrollbars">
       <div class="c-header">
         <h2>WebXR Issues</h2>
-        <p>Issues with the API and it's Framework Interactions</p>
+        <p>Issues with the API and it's Framework & Browser Interactions</p>
       </div>
       <div class="c-content" v-for="page in pages" :key="page.id">
         <a class="button" :href="'#' + page.title">{{ page.title }}</a>
@@ -11,13 +11,14 @@
           <h2>{{ page.title }}</h2>
           <p class="date">{{ page.date }}</p>
           <p>>{{ page.subtitle }}</p>
-          <p>>{{ page.source }}</p>
+          <p>>Source: {{ page.source }}</p>
           <p class="rprod">>Reproducible:
             <ion-icon class="check" v-if="page.reproduction" name="checkmark-outline"></ion-icon>
             <ion-icon v-else name="close-outline"></ion-icon>
           </p>
           <a v-if="page.example" class="button" :href="'issues/' + page.title">>>>Example</a>
           <a v-if="page.solution" class="button" :href="'solutions/' + page.title">>>>Solution Experiment</a>
+          <a v-if="page.link" class="button" target="_blank" rel="noopener noreferrer" href="page.link">>>>Reference</a>
         </div>
       </div>
     </div>
@@ -31,7 +32,8 @@
         <ion-icon v-else name="close-outline"></ion-icon>
       </p>
       <a v-if="page.example" class="button" :href="'issues/' + page.title">>>>Example</a>
-      <a v-if="page.solution" class="button" :href="'solutions/' + page.title">>>>Solution Experiment</a>
+      <a v-if="page.solution" class="button" :href="'issues/' + page.title + '/solution'">>>>Solution Experiment</a>
+      <a v-if="page.link" class="button" target="_blank" rel="noopener noreferrer" :href="page.link">>>>Reference</a>
     </div>
   </div>
 </template>
@@ -46,12 +48,12 @@ export default {
   data() {
     return {
       pages: [
-        { id: 1, title: 'A-Frame-AR', date: '20.12.23', reproduction: '', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: 'https://aframe.io/docs/1.3.0/introduction/', solution: 'https://aframe.io/' },
+        { id: 1, title: 'Browser-Support', date: '20.12.23', reproduction: '+', subtitle: 'The WebXR API is not yet supported by all web browsers, and even when it is supported, the level of support can vary between browsers. This can make it difficult to ensure that an XR experience will work on all devices.', source: 'Due to different development cycles, hardware requirements, and prioritization of other technologies, full acccess to the API isnt available for most browsers. In those cases Polyfill allows for a rudamentory support.', link: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'BrowserSupport' },
         { id: 2, title: 'WebXR-Useability', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
         { id: 3, title: 'RayCast-Compatibility-Issue', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
         { id: 4, title: 'Render-Performance-Issue', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
         { id: 5, title: 'XRSpace-Threats', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'https://github.com/immersive-web/webxr/issues/752', example: 'https://github.com/immersive-web/webxr/issues/752', solution: 'https://aframe.io/' },
-        { id: 6, title: 'Device-Support', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
+        { id: 6, title: 'Device-Support', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'https://aframe.io/' },
       ],
       window: {
         width: 0,

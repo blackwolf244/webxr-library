@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       xrSession: null,
+      webxrPolyfill: null,
     }
   },
   methods: {
@@ -19,9 +20,37 @@ export default {
         this.xrSession = null;
       }
     },
+    getXR(usePolyfill) {
+      let tempXR;
+
+      switch (usePolyfill) {
+        case "if-needed":
+          tempXR = navigator.xr;
+          if (!tempXR) {
+            this.webxrPolyfill = new WebXRPolyfill();
+            tempXR = this.webxrPolyfill;
+          }
+          break;
+        case "yes":
+          this.webxrPolyfill = new WebXRPolyfill();
+          tempXR = this.webxrPolyfill;
+          break;
+        case "no":
+        default:
+          tempXR = navigator.xr;
+          break;
+      }
+
+      return tempXR;
+    },
     async activateXR() {
       //Adaptation of the Base Version to work in the current Frame of the project. Added Session-End needed Properties.
-
+      const xr = await this.getXR("if-needed");
+      if (this.webxrPolyfill) {
+        console.log('WebXR Polyfill active');
+      } else {
+        console.log('WebXR Polyfill not active');
+      }
       // Add a canvas element and initialize a WebGL context that is compatible with WebXR.
       const canvas = document.createElement("canvas");
       const gl = canvas.getContext("webgl", { xrCompatible: true });
@@ -47,17 +76,45 @@ export default {
       const camera = new THREE.PerspectiveCamera();
       camera.matrixAutoUpdate = false;
 
-      // Initialize a WebXR session using "immersive-ar".
-      const session = await navigator.xr.requestSession("immersive-ar", { requiredFeatures: ['hit-test'] });
-      session.updateRenderState({
-        baseLayer: new XRWebGLLayer(session, gl)
+      let sessionType;
+      let sessionFeatures;
+      let session;
+
+
+      await navigator.xr.isSessionSupported("immersive-ar", ["hit-test"]).then((supported) => {
+        if (supported) {
+          sessionType = "immersive-ar";
+          sessionFeatures = "hit-test";
+          console.log('WebXR Session-Mode/Feature: ' + sessionType + '/' + sessionFeatures);
+          try {
+            session = navigator.xr.requestSession(sessionType, { requiredFeatures: [sessionFeatures] });
+            session.updateRenderState({
+              baseLayer: new XRWebGLLayer(session, gl)
+            });
+          } catch (error) {
+            console.log("Error starting XR session: ", error)
+          }
+        } else {
+          sessionType = "inline";
+          console.log('WebXR Session-Mode/Feature: ' + sessionType);
+          try {
+            session = navigator.xr.requestSession(sessionType);
+            session.updateRenderState({
+              baseLayer: new XRWebGLLayer(session, gl)
+            });
+          } catch (error) {
+            console.log("Error starting XR session: ", error)
+          }
+        }
       });
+      console.log('WebXR Session-Mode/Feature: ' + sessionType + '/' + sessionFeatures);
+      // Initialize a WebXR session using "immersive-ar" or "inline" if it isn't supported.
+      // const session = await navigator.xr.requestSession(sessionType, { requiredFeatures: ['hit-test'] })
 
-      //Add to data to call end function on destroy.
       this.xrSession = session;
-
       // A 'local' reference space has a native origin that is located
       // near the viewer's position at the time the session was created.
+
       const referenceSpace = await session.requestReferenceSpace('local');
 
       // Create another XRReferenceSpace that has the viewer as the origin.
