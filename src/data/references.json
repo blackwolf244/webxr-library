@@ -1,10 +1,18 @@
 [
   {
-    "Title": "", 
-    "Source": ""
+    "title": "WebXR Standards and Accessibility Architecture Issues",
+    "source": "https://www.w3.org/WAI/APA/wiki/WebXR_Standards_and_Accessibility_Architecture_Issues"
   },
   {
-    "Title": "", 
-    "Source": ""
+    "title": "How long do you want to maintain this thing? Understanding the Challenges Faced by WebXR Creators",
+    "source": "https://dl.acm.org/doi/abs/10.1145/3485444.3495181"
+  },
+  {
+    "title": "List of Supported Devices",
+    "source": "https://immersiveweb.dev/#supporttable"
+  },
+  {
+    "title": "Mozilla - Browser-Compatibility List",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API#browser_compatibility"
   }
 ]

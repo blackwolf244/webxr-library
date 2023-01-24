@@ -13,16 +13,32 @@
     </div>
     <div class="info styled-scrollbars">
       <h2>WebXR Literature</h2>
-      <p>Extended Reality in the Web <br />
-        <small>Extended Reality (XR) is a catch-all term to refer to Augmented Reality (AR) and Virtual Reality
-          (VR).</small> <br />
+      <p>Extended Reality on the Web <br />
+        <small>Following you'll find the literature and links used in this Application
+        </small> <br />
       </p>
-      <p>Source: <br /> <a href="https://en.wikipedia.org/wiki/Extended_Reality"
-          target="_blank">https://en.wikipedia.org/wiki/Extended_Reality</a></p>
-
+      <p>Sources: </p>
+      <p v-for="link in links">
+        <a target="_blank" rel="noopener noreferrer" :href="link.source">>>>{{ link.title }}</a>
+      </p>
     </div>
   </div>
 </template>
+
+<script>
+import jsondata from "../data/references.json"
+
+export default {
+  data() {
+    return {
+      links: jsondata,
+      window: {
+        width: 0,
+      }
+    }
+  },
+}
+</script>
 
 <style scoped>
 p {
