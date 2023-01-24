@@ -1,6 +1,6 @@
 <script>
 import Footer from "./components/Footer.vue";
-
+import jsondata from "./data/issues.json"
 export default {
   name: 'App',
   components: {
