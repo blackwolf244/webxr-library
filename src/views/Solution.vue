@@ -4,7 +4,10 @@
       <div class="c-content">
         <div>
           <div>
-            <BrowserSupport v-if="active.title === id"></BrowserSupport>
+            <BrowserSupport v-if="active.title === 'Browser-Support'"></BrowserSupport>
+            <Polyfill v-if="active.title === 'Polyfill'"></Polyfill>
+            <XRScene v-if="active.title === 'XR-Scene'"></XRScene>
+            <Dragging v-if="active.title === 'Dragging'"></Dragging>
           </div>
           <div v-if="this.window.width <= 900" class="celement" :id="active.title">
             <h2>{{ active.title }}</h2>
@@ -39,10 +42,16 @@
 
 <script scoped>
 import BrowserSupport from '../views/Solutions/BrowserSupport.vue'
+import Polyfill from '../views/Solutions/Polyfill.vue'
+import XRScene from '../views/Solutions/XRScene.vue'
+import Dragging from '../views/Solutions/Dragging.vue'
 
 export default {
   components: {
-    BrowserSupport
+    BrowserSupport,
+    Polyfill,
+    XRScene,
+    Dragging,
   },
   data() {
     return {
@@ -53,6 +62,9 @@ export default {
         { id: 4, title: 'Render-Performance-Issue', date: '20.12.23', solved: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
         { id: 5, title: 'XRSpace-Threats', date: '20.12.23', solved: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'https://github.com/immersive-web/webxr/issues/752', example: 'https://github.com/immersive-web/webxr/issues/752', solution: 'https://aframe.io/' },
         { id: 6, title: 'Device-Support', date: '20.12.23', solved: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'https://aframe.io/' },
+        { id: 7, title: 'Polyfill', solved: '', subtitle: 'The WebXR API is not yet supported by all web browsers, and even when it is supported, the level of support can vary between browsers. This can make it difficult to ensure that an XR experience will work on all devices.', source: 'Due to different development cycles, hardware requirements, and prioritization of other technologies, full acccess to the API isnt available for most browsers. In those cases Polyfill allows for a limited support of its featureset.', link: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'WebXR-polyfill is a JavaScript library that allows developers to use the WebXR API in browsers that do not support it natively. It provides a compatibility layer between the WebXR API and the WebVR API' },
+        { id: 8, title: 'XR-Scene', solved: '', subtitle: 'The WebXR API is not yet supported by all web browsers, and even when it is supported, the level of support can vary between browsers. This can make it difficult to ensure that an XR experience will work on all devices.', source: 'Due to different development cycles, hardware requirements, and prioritization of other technologies, full acccess to the API isnt available for most browsers. In those cases Polyfill allows for a limited support of its featureset.', link: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'WebXR-polyfill is a JavaScript library that allows developers to use the WebXR API in browsers that do not support it natively. It provides a compatibility layer between the WebXR API and the WebVR API' },
+        { id: 9, title: 'Dragging', solved: '', subtitle: 'The WebXR API is not yet supported by all web browsers, and even when it is supported, the level of support can vary between browsers. This can make it difficult to ensure that an XR experience will work on all devices.', source: 'Due to different development cycles, hardware requirements, and prioritization of other technologies, full acccess to the API isnt available for most browsers. In those cases Polyfill allows for a limited support of its featureset.', link: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'WebXR-polyfill is a JavaScript library that allows developers to use the WebXR API in browsers that do not support it natively. It provides a compatibility layer between the WebXR API and the WebVR API' },
       ],
       window: {
         width: 0,

@@ -17,8 +17,9 @@
             <ion-icon v-else name="close-outline"></ion-icon>
           </p>
           <a v-if="page.example" class="button" :href="'issues/' + page.title">>>>Example</a>
-          <a v-if="page.solution" class="button" :href="'solutions/' + page.title">>>>Solution Experiment</a>
-          <a v-if="page.link" class="button" target="_blank" rel="noopener noreferrer" href="page.link">>>>Reference</a>
+          <a v-if="page.solution" class="button" :href="'issues/' + page.title + '/solution'">>>>Solution Experiment</a>
+          <a v-if="page.link" class="button" target="_blank" rel="noopener noreferrer"
+            :href="page.link">>>>Reference</a>
         </div>
       </div>
     </div>
@@ -54,6 +55,9 @@ export default {
         { id: 4, title: 'Render-Performance-Issue', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
         { id: 5, title: 'XRSpace-Threats', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'https://github.com/immersive-web/webxr/issues/752', example: 'https://github.com/immersive-web/webxr/issues/752', solution: 'https://aframe.io/' },
         { id: 6, title: 'Device-Support', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'https://aframe.io/' },
+        { id: 7, title: 'Polyfill', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'https://aframe.io/' },
+        { id: 8, title: 'XR-Scene', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'https://aframe.io/' },
+        { id: 9, title: 'Dragging', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'https://immersiveweb.dev/#supporttable', example: '', solution: 'https://aframe.io/' },
       ],
       window: {
         width: 0,
