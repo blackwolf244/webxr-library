@@ -31,7 +31,9 @@
     </div>
   </div>
 </template>
-
+<script>
+import "aframe";
+</script>
 <style scoped>
 .content div {
   border: 1px solid black;

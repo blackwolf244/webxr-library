@@ -1,11 +1,11 @@
 <template>
   <div class="box">
-    <div class="content styled-scrollbars">
+    <div class="content styled-scrollbars" v-if="active.solution.active">
       <div class="c-content">
         <div>
           <div>
             <BrowserSupport v-if="active.title === 'Browser-Support'"></BrowserSupport>
-            <Polyfill v-if="active.title === 'Polyfill'"></Polyfill>
+            <Polyfill v-if="active.title === 'Polyfill-VR'"></Polyfill>
             <XRScene v-if="active.title === 'Experimentals'"></XRScene>
           </div>
           <div v-if="this.window.width <= 900" class="celement" :id="active.title">
@@ -141,7 +141,7 @@ p {
 }
 
 .info {
-  float: right;
+  float: left;
   max-height: calc(100vh - 100px - 17rem);
   padding-top: 10px;
   padding-left: 1rem;

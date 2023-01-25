@@ -4,9 +4,13 @@
   </div>
 </template>
 
-<script scoped>
-
+<script>
+import * as THREE from 'three'
+import { createToast } from 'mosha-vue-toastify';
+// import the styling for the toast
+import 'mosha-vue-toastify/dist/style.css'
 export default {
+
   data() {
     return {
       xrSession: null,
@@ -14,6 +18,30 @@ export default {
     }
   },
   methods: {
+    error(error) {
+      createToast({
+        title: "Something went wrong: " + (error || ""),
+        description: 'Please reload the page.'
+      },
+        {
+          transition: 'slide',
+          type: 'error',
+          showIcon: true,
+          timeout: 8000,
+        })
+    },
+    warning(error) {
+      createToast({
+        title: "Error starting XR session: " + (error || ""),
+        description: 'This Demo only works on AR-Compatible Devices'
+      },
+        {
+          transition: 'slide',
+          type: 'warning',
+          showIcon: true,
+          timeout: 6000,
+        })
+    },
     endSession() {
       if (this.xrSession) {
         this.xrSession.end();
@@ -81,7 +109,7 @@ export default {
       let session;
 
 
-      await navigator.xr.isSessionSupported("immersive-ar", ["hit-test"]).then((supported) => {
+      const test = await navigator.xr.isSessionSupported("immersive-ar", ["hit-test"]).then((supported) => {
         if (supported) {
           sessionType = "immersive-ar";
           sessionFeatures = "hit-test";
@@ -92,94 +120,92 @@ export default {
               baseLayer: new XRWebGLLayer(session, gl)
             });
           } catch (error) {
-            console.log("Error starting XR session: ", error)
+            console.log("Error starting XR session: " + error)
+            this.error(error);
           }
+
         } else {
-          sessionType = "inline";
-          console.log('WebXR Session-Mode/Feature: ' + sessionType);
-          try {
-            session = navigator.xr.requestSession(sessionType);
-            session.updateRenderState({
-              baseLayer: new XRWebGLLayer(session, gl)
-            });
-          } catch (error) {
-            console.log("Error starting XR session: ", error)
-          }
+          this.warning();
         }
       });
-      console.log('WebXR Session-Mode/Feature: ' + sessionType + '/' + sessionFeatures);
-      // Initialize a WebXR session using "immersive-ar" or "inline" if it isn't supported.
-      // const session = await navigator.xr.requestSession(sessionType, { requiredFeatures: ['hit-test'] })
 
       this.xrSession = session;
       // A 'local' reference space has a native origin that is located
       // near the viewer's position at the time the session was created.
+      if (test) {
+        try {
+          const referenceSpace = await session.requestReferenceSpace('local')
+          // Create another XRReferenceSpace that has the viewer as the origin.
+          const viewerSpace = await session.requestReferenceSpace('viewer');
+          // Perform hit testing using the viewer as origin.
+          const hitTestSource = await session.requestHitTestSource({ space: viewerSpace });
 
-      const referenceSpace = await session.requestReferenceSpace('local');
+          const loader = new THREE.GLTFLoader();
+          let reticle;
+          loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/reticle/reticle.gltf", function (gltf) {
+            reticle = gltf.scene;
+            reticle.visible = false;
+            scene.add(reticle);
+          })
 
-      // Create another XRReferenceSpace that has the viewer as the origin.
-      const viewerSpace = await session.requestReferenceSpace('viewer');
-      // Perform hit testing using the viewer as origin.
-      const hitTestSource = await session.requestHitTestSource({ space: viewerSpace });
+          let flower;
+          loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/sunflower/sunflower.gltf", function (gltf) {
+            flower = gltf.scene;
+          });
 
-      const loader = new THREE.GLTFLoader();
-      let reticle;
-      loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/reticle/reticle.gltf", function (gltf) {
-        reticle = gltf.scene;
-        reticle.visible = false;
-        scene.add(reticle);
-      })
+          session.addEventListener("select", (event) => {
+            if (flower) {
+              const clone = flower.clone();
+              clone.position.copy(reticle.position);
+              scene.add(clone);
+            }
+          });
 
-      let flower;
-      loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/sunflower/sunflower.gltf", function (gltf) {
-        flower = gltf.scene;
-      });
+          // Create a render loop that allows us to draw on the AR view.
+          const onXRFrame = (time, frame) => {
 
-      session.addEventListener("select", (event) => {
-        if (flower) {
-          const clone = flower.clone();
-          clone.position.copy(reticle.position);
-          scene.add(clone);
-        }
-      });
+            // Queue up the next draw request.
+            session.requestAnimationFrame(onXRFrame);
 
-      // Create a render loop that allows us to draw on the AR view.
-      const onXRFrame = (time, frame) => {
+            // Bind the graphics framebuffer to the baseLayer's framebuffer
+            gl.bindFramebuffer(gl.FRAMEBUFFER, session.renderState.baseLayer.framebuffer)
 
-        // Queue up the next draw request.
-        session.requestAnimationFrame(onXRFrame);
+            // Retrieve the pose of the device.
+            // XRFrame.getViewerPose can return null while the session attempts to establish tracking.
+            const pose = frame.getViewerPose(referenceSpace);
+            if (pose) {
+              // In mobile AR, we only have one view.
+              const view = pose.views[0];
 
-        // Bind the graphics framebuffer to the baseLayer's framebuffer
-        gl.bindFramebuffer(gl.FRAMEBUFFER, session.renderState.baseLayer.framebuffer)
+              const viewport = session.renderState.baseLayer.getViewport(view);
+              renderer.setSize(viewport.width, viewport.height)
 
-        // Retrieve the pose of the device.
-        // XRFrame.getViewerPose can return null while the session attempts to establish tracking.
-        const pose = frame.getViewerPose(referenceSpace);
-        if (pose) {
-          // In mobile AR, we only have one view.
-          const view = pose.views[0];
+              // Use the view's transform matrix and projection matrix to configure the THREE.camera.
+              camera.matrix.fromArray(view.transform.matrix)
+              camera.projectionMatrix.fromArray(view.projectionMatrix);
+              camera.updateMatrixWorld(true);
 
-          const viewport = session.renderState.baseLayer.getViewport(view);
-          renderer.setSize(viewport.width, viewport.height)
+              const hitTestResults = frame.getHitTestResults(hitTestSource);
+              if (hitTestResults.length > 0 && reticle) {
+                const hitPose = hitTestResults[0].getPose(referenceSpace);
+                reticle.visible = true;
+                reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z)
+                reticle.updateMatrixWorld(true);
+              }
 
-          // Use the view's transform matrix and projection matrix to configure the THREE.camera.
-          camera.matrix.fromArray(view.transform.matrix)
-          camera.projectionMatrix.fromArray(view.projectionMatrix);
-          camera.updateMatrixWorld(true);
-
-          const hitTestResults = frame.getHitTestResults(hitTestSource);
-          if (hitTestResults.length > 0 && reticle) {
-            const hitPose = hitTestResults[0].getPose(referenceSpace);
-            reticle.visible = true;
-            reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z)
-            reticle.updateMatrixWorld(true);
+              // Render the scene with THREE.WebGLRenderer.
+              renderer.render(scene, camera)
+            }
+            session.requestAnimationFrame(onXRFrame);
           }
-
-          // Render the scene with THREE.WebGLRenderer.
-          renderer.render(scene, camera)
+        } catch (error) {
+          console.log("Error Setting Reference-Space for AR" + error)
+          error(error)
         }
       }
-      session.requestAnimationFrame(onXRFrame);
+
+
+
     }
   },
   beforeDestroy() {

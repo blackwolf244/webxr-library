@@ -4,7 +4,7 @@
 </template>
 
 <script scoped>
-
+import * as THREE from 'three'
 export default {
   data() {
     return {

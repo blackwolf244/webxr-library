@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { ARButton } from 'three/examples/jsm/webxr/ARButton'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton'

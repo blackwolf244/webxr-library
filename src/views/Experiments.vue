@@ -3,7 +3,7 @@
     <div class="content styled-scrollbars">
       <div class="c-header">
         <h2>WebXR Experiments</h2>
-        <p>Issues with the API and it's Framework Interactions</p>
+        <p>Experiments with WebXR in order to find solutions and or to understand deeper concepts of the API</p>
       </div>
       <div class="c-content" v-for="page in pages" :key="page.id">
         <a class="button" :href="'#' + page.title">{{ page.title }}</a>
