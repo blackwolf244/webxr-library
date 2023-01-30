@@ -24,14 +24,14 @@ export default {
         </router-link>
         <div class="nav-links">
           <ul>
-            <li><router-link @click="onClick" to="/frameworks">Frameworks</router-link></li>
+            <li><router-link @click="onClick" to="/devtools">Devtools</router-link></li>
             <li><router-link @click="onClick" to="/issues">Issues</router-link></li>
             <li><router-link @click="onClick" to="/experiments">Experiments</router-link></li>
           </ul>
         </div>
         <ion-icon @click="onClick" name="menu-outline" class="menu"></ion-icon>
       </nav>
-      <p>Analysis of Frameworks and Issues of the AR and VR API</p>
+      <p>Analysis of Tools, Issues and Features of the XR-API</p>
     </div>
 
   </header>

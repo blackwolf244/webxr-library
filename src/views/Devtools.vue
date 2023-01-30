@@ -2,7 +2,7 @@
   <div class="box">
     <div class="content styled-scrollbars">
       <div class="c-header">
-        <h2>WebXR Frameworks</h2>
+        <h2>WebXR Devtools</h2>
         <p>A condensed list of starter Projects</p>
       </div>
       <div class="c-content" v-for="page in pages" :key="page.id">

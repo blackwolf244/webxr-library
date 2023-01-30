@@ -10,14 +10,14 @@ export default createRouter({
       component: Landing,
     },
     {
-      path: "/frameworks",
-      name: "Frameworks",
-      component: () => import("../views/Frameworks.vue"),
+      path: "/devtools",
+      name: "Devtools",
+      component: () => import("../views/Devtools.vue"),
     },
     {
-      path: "/frameworks/:id",
-      name: "FrameworkExample",
-      component: () => import("../views/FrameworkExample.vue"),
+      path: "/devtools/:id",
+      name: "DevtoolsExample",
+      component: () => import("../views/DevtoolExample.vue"),
     },
     {
       path: "/issues",
