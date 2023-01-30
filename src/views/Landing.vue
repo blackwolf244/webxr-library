@@ -26,7 +26,11 @@
 </template>
 
 <script>
+import { createToast } from 'mosha-vue-toastify';
+// import the styling for the toast
+import 'mosha-vue-toastify/dist/style.css'
 import jsondata from "../data/references.json"
+import XREmulatorNoti from '../components/XREmulatorNoti.vue';
 
 export default {
   data() {
@@ -37,6 +41,18 @@ export default {
       }
     }
   },
+  mounted() {
+    if (navigator.xr) {
+      createToast(
+        XREmulatorNoti,
+        {
+          timeout: 8000,
+          transition: 'slide',
+          position: 'bottom-right'
+        })
+    }
+
+  }
 }
 </script>
 

@@ -4,6 +4,9 @@
 </template>
 
 <script>
+import { createToast } from 'mosha-vue-toastify';
+// import the styling for the toast
+import 'mosha-vue-toastify/dist/style.css'
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
@@ -37,9 +40,6 @@ export default {
       }
 
       return tempXR;
-    },
-    vrButton() {
-
     },
     error(error) {
       createToast({

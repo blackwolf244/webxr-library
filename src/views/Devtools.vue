@@ -13,7 +13,7 @@
           </p>
           <p>>Get Started: <br /> <a>{{ page.starter }}</a></p>
           <p>>Website: <br /> <a>{{ page.website }}</a></p>
-          <a class="button" :href="'frameworks/' + page.title">>>>Example</a>
+          <a class="button" :href="'devtools/' + page.title">>>>Example</a>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       </p>
       <p>>Get Started: <br /> <a target="_blank">{{ page.starter }}</a></p>
       <p>>Website: <br /> <a target="_blank">{{ page.website }}</a></p>
-      <a class="button" :href="'frameworks/' + page.title">>>>Example</a>
+      <a class="button" :href="'devtools/' + page.title">>>>Example</a>
     </div>
   </div>
 </template>
