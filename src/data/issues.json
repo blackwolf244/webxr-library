@@ -137,7 +137,11 @@
       "solved": "-",
       "source": "Due to different development cycles, hardware requirements, and prioritization of other technologies, full acccess to the API isnt available for most browsers. In those cases Polyfill allows for a limited support of its featureset.",
       "links": [
-        "https://immersiveweb.dev/#supporttable"
+        {
+          "title": "Immersive-Web Support-Table",
+          "source": "https://immersiveweb.dev/#supporttable"
+        }
+        
       ],
       "example": "",
       "explanation": "WebXR-polyfill is a JavaScript library that allows developers to use the WebXR API in browsers that do not support it natively. It provides a compatibility layer between the WebXR API and the WebVR API"

@@ -1,14 +1,12 @@
 <template>
-  <div ref="container" class="canvas-container">
-    <canvas ref="canvas"></canvas>
+  <div ref="content">
   </div>
 </template>
 
 <script>
-import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { VRButton } from 'three/examples/jsm/webxr/VRButton'
-import { XRControllerModelFactory } from 'three/examples/jsm/webxr/XRControllerModelFactory';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
 
 export default {
   data() {
@@ -40,6 +38,33 @@ export default {
 
       return tempXR;
     },
+    vrButton() {
+
+    },
+    error(error) {
+      createToast({
+        title: "Something went wrong: " + (error || ""),
+        description: 'Please reload the page.'
+      },
+        {
+          transition: 'slide',
+          type: 'error',
+          showIcon: true,
+          timeout: 8000,
+        })
+    },
+    warning(error) {
+      createToast({
+        title: "Error starting XR session: " + (error || ""),
+        description: 'This Demo only works on AR-Compatible Devices'
+      },
+        {
+          transition: 'slide',
+          type: 'warning',
+          showIcon: true,
+          timeout: 6000,
+        })
+    },
   },
   async mounted() {
     const container = this.$refs.container;
@@ -65,13 +90,200 @@ export default {
 
     init();
     animate();
+    function vrbutton() {
+      const button = document.createElement('button');
+      async function onSessionStarted(session) {
+
+        session.addEventListener('end', onSessionEnded);
+
+        await renderer.xr.setSession(session);
+        button.textContent = 'EXIT VR';
+
+        currentSession = session;
+
+      }
+
+      function onSessionEnded( /*event*/) {
+
+        currentSession.removeEventListener('end', onSessionEnded);
+
+        button.textContent = 'ENTER VR';
+
+        currentSession = null;
+
+      }
+
+      button.textContent = 'ENTER VR';
+      button.onclick = function () {
+
+        if (currentSession === null) {
+
+          // WebXR's requestReferenceSpace only works if the corresponding feature
+          // was requested at session creation time. For simplicity, just ask for
+          // the interesting ones as optional features, but be aware that the
+          // requestReferenceSpace call will fail if it turns out to be unavailable.
+          // ('local' is always available for immersive sessions and doesn't need to
+          // be requested separately.)
+
+          const sessionInit = { optionalFeatures: ['local-floor', 'bounded-floor', 'hand-tracking', 'layers'] };
+          navigator.xr.requestSession('immersive-vr', sessionInit).then(onSessionStarted);
+
+        } else {
+
+          currentSession.end();
+
+        }
+
+      };
+      function disableButton() {
+
+        button.style.display = '';
+
+        button.style.cursor = 'auto';
+        button.style.left = 'calc(50% - 75px)';
+        button.style.width = '150px';
+
+        button.onmouseenter = null;
+        button.onmouseleave = null;
+
+        button.onclick = null;
+
+      }
+      function showWebXRNotFound() {
+
+        disableButton();
+
+        button.textContent = 'VR NOT SUPPORTED';
+
+      }
+      function showVRNotAllowed(exception) {
+
+        disableButton();
+
+        console.warn('Exception when trying to call xr.isSessionSupported', exception);
+
+        button.textContent = 'VR NOT ALLOWED';
+
+      }
+
+      if ('xr' in navigator) {
+
+        button.id = 'VRButton';
+
+        navigator.xr.isSessionSupported('immersive-vr').then(function (supported) {
+
+          supported ? showEnterVR() : showWebXRNotFound();
+
+          if (supported) {
+
+            button.click();
+
+          }
+
+        }).catch(showVRNotAllowed);
+
+        return button;
+
+      } else {
+
+        const message = document.createElement('a');
+
+        if (window.isSecureContext === false) {
+
+          message.href = document.location.href.replace(/^http:/, 'https:');
+          message.innerHTML = 'WEBXR NEEDS HTTPS'; // TODO Improve message
+
+        } else {
+
+          message.href = 'https://immersiveweb.dev/';
+          message.innerHTML = 'WEBXR NOT AVAILABLE';
+
+        }
+
+        message.style.left = 'calc(50% - 90px)';
+        message.style.width = '180px';
+        message.style.textDecoration = 'none';
+
+        stylizeElement(message);
+
+        return message;
+
+      }
+    }
+    await function vr() {
+      const test = navigator.xr.isSessionSupported("immersive-vr", { optionalFeatures: ['local-floor', 'bounded-floor', 'hand-tracking', 'layers'] }).then((supported) => {
+        if (supported) {
+          try {
+            const sessionInit = { optionalFeatures: ['local-floor', 'bounded-floor', 'hand-tracking', 'layers'] };
+            session = navigator.xr.requestSession('immersive-vr', sessionInit).then(onSessionStarted);
+          } catch (error) {
+            console.log("Error starting XR session: " + error)
+            this.error(error);
+          }
+
+        } else {
+          this.warning();
+        }
+      });
+
+      if (test) {
+        try {
+          const referenceSpace = session.requestReferenceSpace('local')
+          // Create another XRReferenceSpace that has the viewer as the origin.
+          const viewerSpace = session.requestReferenceSpace('viewer');
+          // Perform hit testing using the viewer as origin.
+          const hitTestSource = session.requestHitTestSource({ space: viewerSpace });
+
+          session.addEventListener("select", (event) => {
+            if (flower) {
+              const clone = flower.clone();
+              clone.position.copy(reticle.position);
+              scene.add(clone);
+            }
+          });
+
+          // Create a render loop that allows us to draw on the AR view.
+          const onXRFrame = (time, frame) => {
+
+            // Queue up the next draw request.
+            session.requestAnimationFrame(onXRFrame);
+
+            // Bind the graphics framebuffer to the baseLayer's framebuffer
+            gl.bindFramebuffer(gl.FRAMEBUFFER, session.renderState.baseLayer.framebuffer)
+
+            // Retrieve the pose of the device.
+            // XRFrame.getViewerPose can return null while the session attempts to establish tracking.
+            const pose = frame.getViewerPose(referenceSpace);
+            if (pose) {
+              // In mobile AR, we only have one view.
+              const view = pose.views[0];
+
+              const viewport = session.renderState.baseLayer.getViewport(view);
+              renderer.setSize(viewport.width, viewport.height)
+
+              // Use the view's transform matrix and projection matrix to configure the THREE.camera.
+              camera.matrix.fromArray(view.transform.matrix)
+              camera.projectionMatrix.fromArray(view.projectionMatrix);
+              camera.updateMatrixWorld(true);
+
+              // Render the scene with THREE.WebGLRenderer.
+              renderer.render(scene, camera)
+            }
+            session.requestAnimationFrame(onXRFrame);
+          }
+        } catch (error) {
+          console.log("Error Setting Reference-Space for AR" + error)
+          error(error)
+        }
+      }
+    }
 
     function init() {
 
       scene = new THREE.Scene();
 
       camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-      camera.position.set(-10, 4, 3);
+      camera.position.set(0, 0, 3);
 
       controls = new OrbitControls(camera, container);
       controls.target.set(0, 1.6, 0);
@@ -124,7 +336,7 @@ export default {
         const object = new THREE.Mesh(geometry, material);
 
         object.position.x = Math.random() * 4 - 2;
-        object.position.y = Math.random() * 3;
+        object.position.y = Math.random() * 4 - 2;
         object.position.z = Math.random() * 4 - 2;
 
         object.rotation.x = Math.random() * 2 * Math.PI;
@@ -299,7 +511,7 @@ export default {
 <style scoped>
 canvas {
   width: 100%;
-  height: 60vh;
+  height: auto;
 }
 
 .canvas-container {

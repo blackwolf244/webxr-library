@@ -69,7 +69,7 @@
 ## About The Project
 
 <a href="https://mygit.th-deg.de/sk20808/webxr-library">
-    <img src="images/Screenshot 2023-01-10 115751.png" alt="Logo" width="100%">
+    <img src="images/Screenshot 2023-01-30 092058.png" alt="Logo" width="100%">
   </a>
 
 WebXR, or Extended Reality on the Web, has seen rapid growth and development in recent years, with significant potential to impact industries and applications. In this thesis, we explore the current state of WebXR technology, examining its key challenges and opportunities, while investigating its potential future developments and implications for society and industry.
@@ -81,6 +81,9 @@ Through a comprehensive review of literature, analysis of existing research, and
 - <a href="https://vuejs.org/"><strong>Vue.js</strong></a>
 - <a href="https://immersiveweb.dev/"><strong>WebXR</strong></a>
 - <a href="https://aframe.io/"><strong>A-Frame</strong></a>
+- <a href="https://threejs.org/"><strong>Three.js</strong></a>
+- <a href="https://www.babylonjs.com/"><strong>Babylon.js</strong></a>
+- <a href="https://ionic.io/ionicons"><strong>Ionicons</strong></a>
 
 <!-- GETTING STARTED -->
 
@@ -120,9 +123,9 @@ This is an example of how to list things you need to use the software and how to
 
 This Project is supposed to show my findings in the field while being split into three Parts,
 
-### Frameworks:
+### Dev-Tools:
 
-> This is used to determine the Functions and Usage-Possibilities for different Frameworks
+> This is used to determine the Functions and Usage-Possibilities for different Development Tools supporting the Web-XR API
 
 ### Issues:
 
@@ -130,14 +133,7 @@ This Project is supposed to show my findings in the field while being split into
 
 ### Experiments:
 
-> Prototypes to represent issues and if possible Fix them.
-
-<!-- ROADMAP -->
-
-## Roadmap
-
-- [x] Add Changelog
-- [ ] Add "components" document to easily copy & paste sections of the readme
+> Prototypes to represent issues and if possible Fix them, or simply to test certain Aspects of the API
 
 See the [open issues](https://mygit.th-deg.de/sk20808/webxr-library/-/issues) for a full list of proposed features (and known issues).
 

@@ -48,7 +48,7 @@ export default {
         this.xrSession = null;
       }
     },
-    getXR(usePolyfill) {
+    async getXR(usePolyfill) {
       let tempXR;
 
       switch (usePolyfill) {

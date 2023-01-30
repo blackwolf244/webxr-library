@@ -1,15 +1,35 @@
 <template>
-  <div ref="container" class="canvas-container">
+  <!-- <div ref="container" class="canvas-container">
     <canvas ref="canvas"></canvas>
+  </div> -->
+  <div ref="container1" class="canvas-container">
+    <canvas ref="canvas0"></canvas>
+    <canvas ref="canvas1"></canvas>
+    <canvas ref="canvas2"></canvas>
+    <canvas ref="canvas3"></canvas>
+  </div>
+  <div>
+    <div ref="c0">
+
+    </div>
+    <div ref="c1">
+
+    </div>
+    <div ref="c2">
+
+    </div>
+    <div ref="c3">
+
+    </div>
   </div>
 </template>
 
 <script>
+import { initializeContent } from 'mosha-vue-toastify/dist/createToast'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { ARButton } from 'three/examples/jsm/webxr/ARButton'
 import { VRButton } from 'three/examples/jsm/webxr/VRButton'
-import { XRControllerModelFactory } from 'three/examples/jsm/webxr/XRControllerModelFactory';
-
 export default {
   data() {
     return {
@@ -43,10 +63,14 @@ export default {
   },
   async mounted() {
     const container = this.$refs.container;
+    const container1 = this.$refs.container1;
     const canvas = this.$refs.canvas
+    const canvas0 = this.$refs.canvas0
+    const canvas1 = this.$refs.canvas1
+    const canvas2 = this.$refs.canvas2
+    const canvas3 = this.$refs.canvas3
     let camera, scene, renderer;
     let controller1, controller2;
-    let controllerGrip1, controllerGrip2;
     let originaspect;
 
     let raycaster;
@@ -54,7 +78,7 @@ export default {
     const intersected = [];
     const tempMatrix = new THREE.Matrix4();
 
-    let controls, group;
+    let group;
 
     const xr = await this.getXR("if-needed");
     if (this.webxrPolyfill) {
@@ -66,39 +90,112 @@ export default {
     init();
     animate();
 
+    function initialize() {
+      scene0 = new THREE.Scene();
+      scene1 = new THREE.Scene();
+      scene2 = new THREE.Scene();
+      scene3 = new THREE.Scene();
+
+      scenes = [scene0, scene1, scene2, scene3];
+
+      const controls = new OrbitControls(camera, container);
+      controls.minDistance = 0;
+      controls.maxDistance = 8;
+
+      scenes.map(scene => scene.add(new THREE.HemisphereLight(0x808080, 0x606060)));
+
+      const light = new THREE.DirectionalLight(0xffffff);
+      light.position.set(0, 6, 0);
+      scenes.map(scene => scene.add(light));
+
+      group = new THREE.Group();
+      scenes.map(scene => scene.add(group));
+
+      const geometries = [
+        new THREE.BoxGeometry(0.2, 0.2, 0.2),
+        new THREE.ConeGeometry(0.2, 0.2, 64),
+        new THREE.CylinderGeometry(0.2, 0.2, 0.2, 64),
+        new THREE.IcosahedronGeometry(0.2, 8),
+        new THREE.TorusGeometry(0.2, 0.04, 64, 32)
+      ];
+
+      for (let i = 0; i < 50; i++) {
+
+        const geometry = geometries[Math.floor(Math.random() * geometries.length)];
+        const material = new THREE.MeshStandardMaterial({
+          color: Math.random() * 0xffffff,
+          roughness: 0.7,
+          metalness: 0.0
+        });
+
+        const object = new THREE.Mesh(geometry, material);
+
+        object.position.x = Math.random() * 4 - 2;
+        object.position.y = Math.random() * 4 - 2;
+        object.position.z = Math.random() * 4 - 2;
+
+        object.rotation.x = Math.random() * 2 * Math.PI;
+        object.rotation.y = Math.random() * 2 * Math.PI;
+        object.rotation.z = Math.random() * 2 * Math.PI;
+
+        object.scale.setScalar(Math.random() + 0.5);
+
+        group.add(object);
+      }
+      //
+
+      renderer0 = new THREE.WebGLRenderer({ canvas: canvas0, antialias: true, alpha: true });
+      renderer1 = new THREE.WebGLRenderer({ canvas: canvas1, antialias: true, alpha: true });
+      renderer2 = new THREE.WebGLRenderer({ canvas: canvas2, antialias: true, alpha: true });
+      renderer3 = new THREE.WebGLRenderer({ canvas: canvas3, antialias: true, alpha: true });
+
+      renders = [renderer0, renderer0, renderer0, renderer0,]
+
+      renders.map(renderer => renderer.setSize(canvas0.clientWidth, canvas.clientHeight));
+      renders.map(renderer => renderer.outputEncoding = THREE.sRGBEncoding);
+      renders.map(renderer => renderer.xr.enabled = true);
+      renders.map(renderer => container.appendChild(renderer.domElement));
+
+      this.$refs.c0.appendChild(ARButton.createButton(renderer));
+      this.$refs.c1.appendChild(VRButton.createButton(renderer));
+      this.$refs.c2.appendChild(ARButton.createButton(renderer));
+      this.$refs.c3.appendChild(VRButton.createButton(renderer));
+
+      // controllers
+      renders.map(renderer => controller1 = renderer.xr.getController(0));
+      controller1.addEventListener('selectstart', onSelectStart);
+      controller1.addEventListener('selectend', onSelectEnd);
+      scene.add(controller1);
+
+      controller2 = renderer.xr.getController(1);
+      controller2.addEventListener('selectstart', onSelectStart);
+      controller2.addEventListener('selectend', onSelectEnd);
+      scene.add(controller2);
+
+      raycaster = new THREE.Raycaster();
+      originaspect = container.clientWidth / container.clientHeight
+      //
+
+      window.addEventListener('resize', onWindowResize);
+
+
+    }
+
     function init() {
 
-      scene = new THREE.Scene();
+
 
       camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-      camera.position.set(-10, 4, 3);
+      camera.position.set(0, 0, 3);
 
-      controls = new OrbitControls(camera, container);
-      controls.target.set(0, 1.6, 0);
-      controls.update();
-
-      const floorGeometry = new THREE.PlaneGeometry(4, 4);
-      const floorMaterial = new THREE.MeshStandardMaterial({
-        color: 0xeeeeee,
-        roughness: 1.0,
-        metalness: 0.0
-      });
-
-      const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-      floor.rotation.x = - Math.PI / 2;
-      floor.receiveShadow = true;
-      scene.add(floor);
+      const controls = new OrbitControls(camera, container);
+      controls.minDistance = 0;
+      controls.maxDistance = 8;
 
       scene.add(new THREE.HemisphereLight(0x808080, 0x606060));
 
       const light = new THREE.DirectionalLight(0xffffff);
       light.position.set(0, 6, 0);
-      light.castShadow = true;
-      light.shadow.camera.top = 2;
-      light.shadow.camera.bottom = - 2;
-      light.shadow.camera.right = 2;
-      light.shadow.camera.left = - 2;
-      light.shadow.mapSize.set(4096, 4096);
       scene.add(light);
 
       group = new THREE.Group();
@@ -124,7 +221,7 @@ export default {
         const object = new THREE.Mesh(geometry, material);
 
         object.position.x = Math.random() * 4 - 2;
-        object.position.y = Math.random() * 3;
+        object.position.y = Math.random() * 4 - 2;
         object.position.z = Math.random() * 4 - 2;
 
         object.rotation.x = Math.random() * 2 * Math.PI;
@@ -145,7 +242,7 @@ export default {
       renderer.xr.enabled = true;
       container.appendChild(renderer.domElement);
 
-      container.appendChild(VRButton.createButton(renderer));
+      container.appendChild(ARButton.createButton(renderer));
 
       // controllers
 
@@ -158,25 +255,6 @@ export default {
       controller2.addEventListener('selectstart', onSelectStart);
       controller2.addEventListener('selectend', onSelectEnd);
       scene.add(controller2);
-
-      const controllerModelFactory = new XRControllerModelFactory();
-
-      controllerGrip1 = renderer.xr.getControllerGrip(0);
-      controllerGrip1.add(controllerModelFactory.createControllerModel(controllerGrip1));
-      scene.add(controllerGrip1);
-
-      controllerGrip2 = renderer.xr.getControllerGrip(1);
-      controllerGrip2.add(controllerModelFactory.createControllerModel(controllerGrip2));
-      scene.add(controllerGrip2);
-
-      const geometry = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, - 1)]);
-
-      const line = new THREE.Line(geometry);
-      line.name = 'line';
-      line.scale.z = 5;
-
-      controller1.add(line.clone());
-      controller2.add(line.clone());
 
       raycaster = new THREE.Raycaster();
       originaspect = container.clientWidth / container.clientHeight
@@ -299,7 +377,7 @@ export default {
 <style scoped>
 canvas {
   width: 100%;
-  height: 60vh;
+  height: auto;
 }
 
 .canvas-container {
