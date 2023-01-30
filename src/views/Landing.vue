@@ -42,13 +42,13 @@ export default {
     }
   },
   mounted() {
-    if (navigator.xr) {
+    if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
       createToast(
         XREmulatorNoti,
         {
           timeout: 8000,
           transition: 'slide',
-          position: 'bottom-right'
+          position: 'bottom-right',
         })
     }
 
