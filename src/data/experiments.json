@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "Polyfill-Loader",
+    "reproduction": "+",
+    "subtitle": "This polyfill experiment loads the required webxr polyfill only when needed by detecting device capability, improving performance, reducing errors and ensuring compatibility for non-webXR capable devices.",
+    "links": [
+        {
+          "title": "An Exploratory Study of Bugs in Extended Reality Applications on the Web",
+          "source": "https://ieeexplore.ieee.org/abstract/document/9251053"
+        }
+      ],
+    "example": "",
+    "solution": {
+      "title": "Polyfill-VR"
+    }
+  },
+  {
+    "id": 2,
+    "title": "WebXR-Loader",
+    "reproduction": "+",
+    "subtitle": "Basic implementation of WebXR without any external modules",
+    "links": "",
+    "example": "",
+    "solution": {
+      "title": "Browser-Support"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Three.js Update",
+    "reproduction": "+",
+    "subtitle": "New implementation methodology with the recent Threejs update",
+    "links": "",
+    "example": "",
+    "solution": {
+      "title": "Threejs-Update"
+    }
+  },
+  {
+    "id": 4,
+    "title": "BabylonJS Implementation",
+    "reproduction": "+",
+    "subtitle": "Basic implementation of Babylonjs with WebXR",
+    "links": "",
+    "example": "",
+    "solution": "",
+    "devtool": {
+      "title": "BabylonJS-VR"
+    }
+  },
+  {
+    "id": 4,
+    "title": "BabylonJS + Module Implementation",
+    "reproduction": "+",
+    "subtitle": "Basic implementation of Babylonjs with WebXR",
+    "links": "",
+    "example": "",
+    "solution": "",
+    "devtool": {
+      "title": "BabylonJS-VR"
+    }
+  },
+  {
+    "id": 4,
+    "title": "AFrame Implementation",
+    "reproduction": "+",
+    "subtitle": "Basic implementation of AFrame",
+    "links": "",
+    "example": "",
+    "solution": "",
+    "devtool": {
+      "title": "A-Frame"
+    }
+  },
+  {
+    "id": 5,
+    "title": "WonderLand-Engine Experimentation",
+    "reproduction": "+",
+    "subtitle": "Simple Tests with the Wonderland Engine",
+    "links": "",
+    "example": "",
+    "solution": "",
+    "devtool": {
+      "title": "WonderLand-Engine"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Unity WebXR Implementation",
+    "reproduction": "+",
+    "subtitle": "Basic implementation of WebXR in Unity",
+    "links": "",
+    "example": "",
+    "solution": "",
+    "devtool": {
+      "title": "Unity"
+    }
+  },
+  {
+    "id": 7,
+    "title": "ThreeJS Implementation",
+    "reproduction": "+",
+    "subtitle": "Basic implementation of Threejs with WebXR",
+    "links": "",
+    "example": "",
+    "solution": "",
+    "devtool": {
+      "title": "BabylonJS-VR"
+    }
+  }
+]

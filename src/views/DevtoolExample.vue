@@ -3,28 +3,65 @@
   <p v-if="this.$route.params.id == 'WebXR-Threejs-AR'">Only available on AR-Compatiple Devices</p>
   <WebXRThreejsAR v-if="this.$route.params.id == 'WebXR-Threejs-AR'">
   </WebXRThreejsAR>
+  <Babylon v-else-if="this.$route.params.id == 'BabylonJS-VR'">
+  </Babylon>
   <AFrame v-else-if="this.$route.params.id == 'A-Frame'"></AFrame>
-  <a class="button" v-else-if="this.$route.params.id == 'Unity'"
-    href="https://mygit.th-deg.de/sk20808/webxr-library/-/tree/main/Examples/Unity" target="_blank"
-    rel="noopener noreferrer">>>Unity-Example Github Repository</a>
-  <a class="button" v-else-if="this.$route.params.id == 'WonderLand-Engine'"
-    href="https://mygit.th-deg.de/sk20808/webxr-library/-/tree/main/Examples/Wonderland" target="_blank"
-    rel="noopener noreferrer">>>Wonderland-Engine-Example Github Repository</a>
+  <div v-else-if="this.$route.params.id == 'Unity'">
+    <a class="button" href="https://mygit.th-deg.de/sk20808/webxr-library/-/tree/main/Examples/Unity" target="_blank"
+      rel="noopener noreferrer">>>Unity-Example Github Repository</a>
+    <div id="wrap">
+      <iframe id="frame" :src="`/UnityDeploy/index.html`" allowfullscreen frameborder="0">
+      </iframe>
+    </div>
+  </div>
+  <div v-else-if="this.$route.params.id == 'WonderLand-Engine'">
+    <a class="button" href="https://mygit.th-deg.de/sk20808/webxr-library/-/tree/main/Examples/Wonderland" target="_blank"
+      rel="noopener noreferrer">>>Wonderland-Engine-Example Github Repository</a>
+    <div id="wrap">
+      <iframe id="frame" :src="`/WonderlandDeploy/index.html`" allowfullscreen frameborder="0">
+      </iframe>
+    </div>
+  </div>
+
+
   <h2 v-else>404</h2>
 </template>
 
 <script scoped>
 import AFrame from './Examples/AFrame.vue'
 import WebXRThreejsAR from './Examples/WebXRThreejsAR.vue'
+import Babylon from './Examples/babylon.vue'
 export default {
   components: {
     AFrame,
     WebXRThreejsAR,
+    Babylon,
   },
 };
 </script>
 
 <style scoped>
+#wrap {
+  width: 100%;
+  height: 60vh;
+}
+
+#frame {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+#frame {
+  -ms-zoom: 0.75;
+  -moz-transform: scale(0.75);
+  -moz-transform-origin: 0 0;
+  -o-transform: scale(0.75);
+  -o-transform-origin: 0 0;
+  -webkit-transform: scale(0.75);
+  -webkit-transform-origin: 0 0;
+}
+
 .button {
   height: 30px;
   line-height: 30px;
@@ -35,7 +72,8 @@ export default {
   background-color: #000;
   color: #fff;
   font-weight: 700;
-  border: none
+  border: none;
+  height: fit-content;
 }
 
 p {

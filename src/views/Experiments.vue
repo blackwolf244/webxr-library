@@ -3,41 +3,48 @@
     <div class="content styled-scrollbars">
       <div class="c-header">
         <h2>WebXR Experiments</h2>
-        <p>Experiments with WebXR in order to find solutions and or to understand deeper concepts of the API</p>
+        <p>Collection of Experiments with WebXR that deepen the understandstanding of API concepts, behaviour and
+          functionalities in different areas of application.</p>
       </div>
       <div class="c-content" v-for="page in pages" :key="page.id">
         <a class="button" :href="'#' + page.title">{{ page.title }}</a>
         <div v-if="this.window.width <= 900" class="celement hidden" :id="page.title">
           <h2>{{ page.title }}</h2>
-          <p class="date">{{ page.date }}</p>
           <p>>{{ page.subtitle }}</p>
-          <p>>{{ page.source }}</p>
-          <p class="rprod">>Reproducible:
+          <p class="rprod">>Functional:
             <ion-icon class="check" v-if="page.reproduction" name="checkmark-outline"></ion-icon>
             <ion-icon v-else name="close-outline"></ion-icon>
           </p>
+          <p v-if="page.links" v-for="link in page.links">
+            <a target="_blank" rel="noopener noreferrer" :href="link.source">>>>{{ link.title }}</a>
+          </p>
           <a v-if="page.example" class="button" :href="'issues/' + page.title">>>>Example</a>
-          <a v-if="page.solution" class="button" :href="'solutions/' + page.title">>>>Solution Experiment</a>
+          <a v-if="page.solution" class="button" :href="'issues/' + page.title + '/solution'">>>>Solution Experiment</a>
+          <a v-if="page.devtool" class="button" :href="'devtools/' + page.devtool.title">>>>Devtool Experiment</a>
         </div>
       </div>
     </div>
     <div class="info styled-scrollbars hidden" v-for="page in pages" :key="page.id" :id="page.title">
       <h2>{{ page.title }}</h2>
-      <p class="date">{{ page.date }}</p>
       <p>>{{ page.subtitle }}</p>
-      <p>>Source: {{ page.source }}</p>
-      <p class="rprod">>Reproducible:
+      <p class="rprod">>Functional:
         <ion-icon class="check" v-if="page.reproduction" name="checkmark-outline"></ion-icon>
         <ion-icon v-else name="close-outline"></ion-icon>
       </p>
+      <p v-if="page.links" v-for="link in page.links">
+        <a target="_blank" rel="noopener noreferrer" :href="link.source">>>>{{ link.title }}</a>
+      </p>
       <a v-if="page.example" class="button" :href="'issues/' + page.title">>>>Example</a>
-      <a v-if="page.solution" class="button" :href="'solutions/' + page.title">>>>Solution Experiment</a>
+      <a v-if="page.solution" class="button" :href="'issues/' + page.solution.title + '/solution'">>>>Solution
+        Experiment</a>
+      <a v-if="page.devtool" class="button" :href="'devtools/' + page.devtool.title">>>>Devtool Experiment</a>
     </div>
   </div>
 </template>
 
 <script scoped>
 import PageEmbed from '../components/PageEmbed.vue'
+import jsondata from "../data/experiments.json"
 
 export default {
   components: {
@@ -45,17 +52,10 @@ export default {
   },
   data() {
     return {
-      pages: [
-        { id: 1, title: 'A-Frame', date: '20.12.23', reproduction: '', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: 'https://aframe.io/docs/1.3.0/introduction/', solution: 'https://aframe.io/' },
-        { id: 2, title: 'B-Frame', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
-        { id: 3, title: 'C-Frame', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
-        { id: 4, title: 'D-Frame', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
-        { id: 5, title: 'E-Frame', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
-        { id: 6, title: 'G-Frame', date: '20.12.23', reproduction: 'b', subtitle: 'A-Frame is an open-source web framework for building virtual reality (VR) experiences. It is built on top of HTML and JavaScript, making it easy for developers to create VR content using familiar web technologies.', source: 'Pies', example: '', solution: 'https://aframe.io/' },
-      ],
+      pages: jsondata,
       window: {
         width: 0,
-      },
+      }
     }
   },
   created() {

@@ -44,13 +44,9 @@
 </template>
 
 <script scoped>
-import PageEmbed from '../components/PageEmbed.vue'
 import jsondata from "../data/issues.json"
 
 export default {
-  components: {
-    PageEmbed
-  },
   data() {
     return {
       pages: jsondata,
