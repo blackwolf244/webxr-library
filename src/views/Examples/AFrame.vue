@@ -31,7 +31,7 @@
     </div>
   </div>
 </template>
-<script>
+<script scoped>
 import "aframe";
 </script>
 <style scoped>

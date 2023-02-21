@@ -27,7 +27,3 @@ To set up this project, follow these steps:
 ## Usage
 
 Once the project is set up, you can use it to showcase WebXR functionality in your browser. The sample scene included in the project shows how to interact with WebXR using Unity.
-
-### License
-
-This project is licensed under the MIT License - see the LICENSE file for details.

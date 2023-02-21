@@ -9,7 +9,7 @@
         existing research, and the development of prototypes, this thesis aims to provide an in-depth evaluation of
         WebXR, its use, and role in our future.</p>
 
-      <p><b>You can read my full publication over here:</b> <br /><a href="">insertlink.wow.com</a> </p>
+      <p><b>You can read my full publication over here:</b> <br /><a href="">to be announced</a> </p>
     </div>
     <div class="info styled-scrollbars">
       <h2>WebXR Literature</h2>

@@ -28,17 +28,6 @@
   },
   {
     "id": 3,
-    "title": "Three.js Update",
-    "reproduction": "+",
-    "subtitle": "New implementation methodology with the recent Threejs update",
-    "links": "",
-    "example": "",
-    "solution": {
-      "title": "Threejs-Update"
-    }
-  },
-  {
-    "id": 4,
     "title": "BabylonJS Implementation",
     "reproduction": "+",
     "subtitle": "Basic implementation of Babylonjs with WebXR",
@@ -62,7 +51,7 @@
     }
   },
   {
-    "id": 4,
+    "id": 5,
     "title": "AFrame Implementation",
     "reproduction": "+",
     "subtitle": "Basic implementation of AFrame",
@@ -74,7 +63,7 @@
     }
   },
   {
-    "id": 5,
+    "id": 6,
     "title": "WonderLand-Engine Experimentation",
     "reproduction": "+",
     "subtitle": "Simple Tests with the Wonderland Engine",
@@ -86,7 +75,7 @@
     }
   },
   {
-    "id": 6,
+    "id": 7,
     "title": "Unity WebXR Implementation",
     "reproduction": "+",
     "subtitle": "Basic implementation of WebXR in Unity",
@@ -98,7 +87,7 @@
     }
   },
   {
-    "id": 7,
+    "id": 8,
     "title": "ThreeJS Implementation",
     "reproduction": "+",
     "subtitle": "Basic implementation of Threejs with WebXR",
@@ -108,5 +97,15 @@
     "devtool": {
       "title": "BabylonJS-VR"
     }
+  },
+  {
+    "id": 9,
+    "title": "model-viewer implementation",
+    "reproduction": "-",
+    "subtitle": "Basic implementation of model-viewer, not functional due to a cross-compatibility issue",
+    "links": "",
+    "example": "",
+    "solution": "",
+    "devtool": ""
   }
 ]

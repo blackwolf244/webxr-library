@@ -19,9 +19,8 @@
           <p v-if="page.links" v-for="link in page.links">
             <a target="_blank" rel="noopener noreferrer" :href="link.source">>>>{{ link.title }}</a>
           </p>
-          <a v-if="page.example" class="button" :href="'issues/' + page.title">>>>Example</a>
+          <a v-if="page.example" class="button" :href="'issues/' + page.title + '/example'">>>>Example Experiment</a>
           <a v-if="page.solution" class="button" :href="'issues/' + page.title + '/solution'">>>>Solution Experiment</a>
-
         </div>
       </div>
     </div>
@@ -37,7 +36,7 @@
       <p v-if="page.links" v-for="link in page.links">
         <a target="_blank" rel="noopener noreferrer" :href="link.source">>>>{{ link.title }}</a>
       </p>
-      <a v-if="page.example" class="button" :href="'issues/' + page.title">>>>Example</a>
+      <a v-if="page.example" class="button" :href="'issues/' + page.title + '/example'">>>>Example Experiment</a>
       <a v-if="page.solution" class="button" :href="'issues/' + page.title + '/solution'">>>>Solution Experiment</a>
     </div>
   </div>

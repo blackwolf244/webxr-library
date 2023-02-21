@@ -37,10 +37,5 @@ export default createRouter({
       path: "/experiments",
       component: () => import("../views/Experiments.vue"),
     },
-    {
-      path: "/experiments/:id",
-      name: "Experiments",
-      component: () => import("../views/Issues.vue"),
-    },
   ],
 });

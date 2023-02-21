@@ -5,6 +5,17 @@
   </WebXRThreejsAR>
   <Babylon v-else-if="this.$route.params.id == 'BabylonJS-VR'">
   </Babylon>
+  <!-- <ModelViewer v-else-if="this.$route.params.id == 'model-viewer'">
+  </ModelViewer> -->
+  <div v-else-if="this.$route.params.id == 'model-viewer'">
+    <p>
+      Due to cross compatibility issues a example has to be imported via a iframe.
+    </p>
+    <div id="wrap">
+      <iframe id="frame" :src="`/ModelViewer/index.html`" allowfullscreen frameborder="0">
+      </iframe>
+    </div>
+  </div>
   <AFrame v-else-if="this.$route.params.id == 'A-Frame'"></AFrame>
   <div v-else-if="this.$route.params.id == 'Unity'">
     <a class="button" href="https://mygit.th-deg.de/sk20808/webxr-library/-/tree/main/Examples/Unity" target="_blank"
@@ -31,11 +42,13 @@
 import AFrame from './Examples/AFrame.vue'
 import WebXRThreejsAR from './Examples/WebXRThreejsAR.vue'
 import Babylon from './Examples/babylon.vue'
+import ModelViewer from './Examples/modelViewer.vue'
 export default {
   components: {
     AFrame,
     WebXRThreejsAR,
     Babylon,
+    ModelViewer
   },
 };
 </script>
