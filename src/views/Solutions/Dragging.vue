@@ -7,7 +7,7 @@
 <script>
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { ARButton } from 'three/examples/jsm/webxr/ARButton'
+import { VRButton } from 'three/examples/jsm/webxr/VRButton'
 export default {
   data() {
     return {
@@ -124,7 +124,7 @@ export default {
       renderer.xr.enabled = true;
       container.appendChild(renderer.domElement);
 
-      container.appendChild(ARButton.createButton(renderer));
+      container.appendChild(VRButton.createButton(renderer));
 
       // controllers
 

@@ -12,19 +12,19 @@
       ],
     "example": "",
     "solution": {
-      "title": "Polyfill-VR"
+      "title": "Incompatible-Browser"
     }
   },
   {
     "id": 2,
-    "title": "WebXR-Loader",
+    "title": "Base-ThreeJS-WebXR-Loader",
     "reproduction": "+",
-    "subtitle": "Basic implementation of WebXR without any external modules",
+    "subtitle": "Basic implementation of WebXR with Three.js without any external modules",
     "links": "",
-    "example": "",
-    "solution": {
+    "example": {
       "title": "Browser-Support"
-    }
+    },
+    "solution": ""
   },
   {
     "id": 3,
@@ -40,15 +40,18 @@
   },
   {
     "id": 4,
-    "title": "BabylonJS + Module Implementation",
+    "title": "ThreeJS-MultipleCanvas-Experiment",
     "reproduction": "+",
-    "subtitle": "Basic implementation of Babylonjs with WebXR",
-    "links": "",
+    "subtitle": "This was a experiment to test if a multitude of canvas elements can be used to symultaniously render different experiences in a webpage. but due to time limits and problems that arose simultaniously it was finally abondoned. Nevertheless the code can be explored in the github repository.",
+    "links": [
+        {
+          "title": "GitLab Code Reference",
+          "source": "https://mygit.th-deg.de/sk20808/webxr-library/-/blob/main/src/views/Examples/immersive-vr.vue"
+        }
+      ],
     "example": "",
     "solution": "",
-    "devtool": {
-      "title": "BabylonJS-VR"
-    }
+    "devtool": ""
   },
   {
     "id": 5,
@@ -92,7 +95,9 @@
     "reproduction": "+",
     "subtitle": "Basic implementation of Threejs with WebXR",
     "links": "",
-    "example": "",
+    "example": {
+      "title": "BabylonJS-VR"
+    },
     "solution": "",
     "devtool": {
       "title": "BabylonJS-VR"
@@ -106,6 +111,6 @@
     "links": "",
     "example": "",
     "solution": "",
-    "devtool": ""
+    "devtool": "model-viewer"
   }
 ]

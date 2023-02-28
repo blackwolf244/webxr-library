@@ -3,6 +3,8 @@
   <p v-if="this.$route.params.id == 'WebXR-Threejs-AR'">Only available on AR-Compatiple Devices</p>
   <WebXRThreejsAR v-if="this.$route.params.id == 'WebXR-Threejs-AR'">
   </WebXRThreejsAR>
+  <ImmersiveVR v-if="this.$route.params.id == 'WebXR-Threejs-VR'">
+  </ImmersiveVR>
   <Babylon v-else-if="this.$route.params.id == 'BabylonJS-VR'">
   </Babylon>
   <!-- <ModelViewer v-else-if="this.$route.params.id == 'model-viewer'">
@@ -38,17 +40,19 @@
   <h2 v-else>404</h2>
 </template>
 
-<script scoped>
+<script>
 import AFrame from './Examples/AFrame.vue'
 import WebXRThreejsAR from './Examples/WebXRThreejsAR.vue'
 import Babylon from './Examples/babylon.vue'
 import ModelViewer from './Examples/modelViewer.vue'
+import ImmersiveVR from './Solutions/Dragging.vue'
 export default {
   components: {
     AFrame,
     WebXRThreejsAR,
     Babylon,
-    ModelViewer
+    ModelViewer,
+    ImmersiveVR
   },
 };
 </script>

@@ -18,8 +18,9 @@
           <p v-if="page.links" v-for="link in page.links">
             <a target="_blank" rel="noopener noreferrer" :href="link.source">>>>{{ link.title }}</a>
           </p>
-          <a v-if="page.example" class="button" :href="'issues/' + page.title">>>>Example</a>
-          <a v-if="page.solution" class="button" :href="'issues/' + page.title + '/solution'">>>>Solution Experiment</a>
+          <a v-if="page.example" class="button" :href="'issues/' + page.example.title + '/example'">>>>Example</a>
+          <a v-if="page.solution" class="button" :href="'issues/' + page.solution.title + '/solution'">>>>Solution
+            Experiment</a>
           <a v-if="page.devtool" class="button" :href="'devtools/' + page.devtool.title">>>>Devtool Experiment</a>
         </div>
       </div>
@@ -34,7 +35,7 @@
       <p v-if="page.links" v-for="link in page.links">
         <a target="_blank" rel="noopener noreferrer" :href="link.source">>>>{{ link.title }}</a>
       </p>
-      <a v-if="page.example" class="button" :href="'issues/' + page.title">>>>Example</a>
+      <a v-if="page.example" class="button" :href="'issues/' + page.example.title + '/example'">>>>Example</a>
       <a v-if="page.solution" class="button" :href="'issues/' + page.solution.title + '/solution'">>>>Solution
         Experiment</a>
       <a v-if="page.devtool" class="button" :href="'devtools/' + page.devtool.title">>>>Devtool Experiment</a>

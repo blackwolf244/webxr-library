@@ -1,6 +1,6 @@
 <template>
   <div class="box">
-    <div class="content styled-scrollbars" v-if="active.solution.active">
+    <div class="content styled-scrollbars" v-if="active.solution.active || active.example.active">
       <div class="c-content">
         <div>
           <div>
@@ -15,14 +15,18 @@
               <ion-icon class="check" v-else-if="active.solution.solved" name="checkmark-outline"></ion-icon>
               <ion-icon v-else name="close-outline"></ion-icon>
             </p>
-            <p v-if="active.links" v-for="link in active.solution.links"><a target="_blank" rel="noopener noreferrer"
-                :href="link">>>>Reference</a></p>
-            <a v-if="active.example" class="button" :href="'issues/' + active.title">>>>Example</a>
+            <p v-if="active.solution.links" v-for="link in active.solution.links"><a target="_blank"
+                rel="noopener noreferrer" :href="link">>>>Reference</a></p>
+            <p v-if="active.example.links" v-for="link in active.example.links"><a target="_blank"
+                rel="noopener noreferrer" :href="link">>>>Reference</a></p>
+            <p> {{ active.example.links }}</p>
+            <a v-if="active.example.example" class="button"
+              :href="'/issues/' + active.example.example + '/example'">>>>Example</a>
           </div>
         </div>
       </div>
     </div>
-    <div class="info styled-scrollbars">
+    <div class="info styled-scrollbars" v-if="(active.title != 'BrowserSupportTable')">
       <h2>{{ active.title }}</h2>
       <p>>Source: {{ active.source }}</p>
       <p>>Solution: {{ active.solution.explanation }}</p>
@@ -33,7 +37,8 @@
       </p>
       <p v-if="active.links" v-for="link in active.solution.links"><a target="_blank" rel="noopener noreferrer"
           :href="link.source">>>>{{ link.title }}</a></p>
-      <a v-if="active.example" class="button" :href="'issues/' + active.title">>>>Example</a>
+      <a v-if="active.example.example" class="button"
+        :href="'/issues/' + active.example.example + '/example'">>>>Example</a>
 
     </div>
   </div>
@@ -41,11 +46,13 @@
 
 <script scoped>
 import jsondata from "../data/issues.json"
-import BrowserSupport from '../views/Solutions/BrowserSupport.vue'
+import BrowserSupport from './Examples/BrowserSupport.vue'
+import BrowserSupportTable from './Examples/BrowserSupportTable.vue'
 
 export default {
   components: {
-    BrowserSupport
+    BrowserSupport,
+    BrowserSupportTable
   },
   data() {
     return {

@@ -12,10 +12,13 @@
   },
   "dependencies": {
     "aframe": "^1.4.1",
+    "aframe-extras": "^6.1.1",
     "aframe-particle-system-component": "^1.1.3",
+    "aframe-teleport-controls": "^0.3.1",
     "babylonjs": "^5.44.0",
     "babylonjs-gui": "^5.47.0",
     "mosha-vue-toastify": "^1.0.23",
+    "super-hands": "^3.0.4",
     "three": "^0.148.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6",

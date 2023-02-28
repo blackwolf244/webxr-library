@@ -11,11 +11,11 @@
           light="type: point"
           animation="property: position; dir: alternate; loop: true; to: 4 2 -9; from: -4 2 -9"></a-entity>
 
-        <a-entity geometry="primitive: box" material="color: red" position="0 0.5 -10"></a-entity>
-        <a-entity geometry="primitive: box" material="color: orange" position="-2 0.5 -8"></a-entity>
-        <a-entity geometry="primitive: box" material="color: yellow" position="2 0.5 -8"></a-entity>
-        <a-entity geometry="primitive: box" material="color: green" position="-4 0.5 -6"></a-entity>
-        <a-entity geometry="primitive: box" material="color: blue" position="4 0.5 -6"></a-entity>
+        <a-entity class="box" geometry="primitive: box" material="color: red" position="0 0.5 -10"></a-entity>
+        <a-entity class="box" geometry="primitive: box" material="color: orange" position="-2 0.5 -8"></a-entity>
+        <a-entity class="box" geometry="primitive: box" material="color: yellow" position="2 0.5 -8"></a-entity>
+        <a-entity class="box" geometry="primitive: box" material="color: green" position="-4 0.5 -6"></a-entity>
+        <a-entity class="box" geometry="primitive: box" material="color: blue" position="4 0.5 -6"></a-entity>
 
         <a-entity id="sky" geometry="primitive: sphere; thetaLength: 90; radius: 30"
           material="side: back; height: 2048; width: 2048; src: #skyTexture; shader: flat"></a-entity>
@@ -26,13 +26,20 @@
         <a-entity id="ground" geometry="primitive: plane; height: 100; width: 100" material="src: #groundTexture"
           rotation="-90 0 0"></a-entity>
 
-        <a-entity id="text" text="value: Show us the light!; color: #BBB" position="2.5 2 -8" scale="8 8 8"></a-entity>
+        <a-entity oculus-touch-controls="hand: left"></a-entity>
+        <a-entity oculus-touch-controls="hand: right"></a-entity>
+
+        <a-entity id="cameraRig">
+          <a-entity id="head" position="0 1.4 0" camera wasd-controls look-controls></a-entity>
+        </a-entity>
+
       </a-scene>
     </div>
   </div>
 </template>
 <script scoped>
 import "aframe";
+
 </script>
 <style scoped>
 .content div {

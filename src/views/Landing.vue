@@ -9,7 +9,7 @@
         existing research, and the development of prototypes, this thesis aims to provide an in-depth evaluation of
         WebXR, its use, and role in our future.</p>
 
-      <p><b>You can read my full publication over here:</b> <br /><a href="">to be announced</a> </p>
+      <!-- <p><b>You can read my full publication over here:</b> <br /><a href="">to be announced</a> </p> -->
     </div>
     <div class="info styled-scrollbars">
       <h2>WebXR Literature</h2>
@@ -29,7 +29,9 @@
 import { createToast } from 'mosha-vue-toastify';
 // import the styling for the toast
 import 'mosha-vue-toastify/dist/style.css'
+// import data
 import jsondata from "../data/references.json"
+// import Emulator Recommendation Toast-Module
 import XREmulatorNoti from '../components/XREmulatorNoti.vue';
 
 export default {
@@ -42,6 +44,7 @@ export default {
     }
   },
   mounted() {
+    // if on desktop browser -> recommend emulation
     if (!(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))) {
       createToast(
         XREmulatorNoti,

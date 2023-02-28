@@ -5,7 +5,7 @@
         <div>
           <div>
             <BrowserSupport v-if="active.title === 'Browser-Support'"></BrowserSupport>
-            <Polyfill v-if="active.title === 'Polyfill-VR'"></Polyfill>
+            <Polyfill v-if="active.title === 'Incompatible-Browser'"></Polyfill>
             <XRScene v-if="active.title === 'Experimentals'"></XRScene>
           </div>
           <div v-if="this.window.width <= 900" class="celement" :id="active.title">
@@ -43,7 +43,7 @@
 
 <script scoped>
 import jsondata from "../data/issues.json"
-import BrowserSupport from '../views/Solutions/BrowserSupport.vue'
+import BrowserSupport from './Examples/BrowserSupport.vue'
 import Polyfill from '../views/Solutions/Polyfill.vue'
 import XRScene from '../views/Solutions/XRScene.vue'
 
