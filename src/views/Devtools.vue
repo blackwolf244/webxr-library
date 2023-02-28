@@ -59,6 +59,7 @@
 .button {
   width: 90%;
   text-align: left;
+  overflow: hidden;
 }
 
 .button:hover {
@@ -110,7 +111,6 @@ a:hover {
   background-color: black;
   color: white;
   font-weight: bold;
-  padding: 5px;
 }
 
 .info p {

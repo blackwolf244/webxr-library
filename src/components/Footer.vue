@@ -22,11 +22,11 @@ footer {
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 100px;
+  min-height: 50px;
+  max-height: 100px;
   width: 100vw;
   background-color: #d7d7d7;
   display: flex;
-
 }
 
 .cont {

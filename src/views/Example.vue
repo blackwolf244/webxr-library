@@ -88,6 +88,7 @@ export default {
   height: 30px;
   line-height: 30px;
   padding-left: 5px;
+  overflow: hidden;
 }
 
 .celement {
@@ -161,7 +162,6 @@ a:hover {
   background-color: black;
   color: white;
   font-weight: bold;
-  padding: 5px;
 }
 
 .info p {

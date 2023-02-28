@@ -84,6 +84,7 @@ export default {
 
 <style scoped>
 .celement .button {
+  overflow: hidden;
   height: 30px;
   line-height: 30px;
   padding-left: 5px;
@@ -160,7 +161,6 @@ a:hover {
   background-color: black;
   color: white;
   font-weight: bold;
-  padding: 5px;
 }
 
 .info p {

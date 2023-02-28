@@ -82,7 +82,8 @@ export default {
 .button {
   height: 30px;
   line-height: 30px;
-  padding-left: 5px
+  padding-left: 5px;
+  overflow: hidden;
 }
 
 .button:hover {

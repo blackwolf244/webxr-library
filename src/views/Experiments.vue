@@ -78,7 +78,8 @@ export default {
 .celement .button {
   height: 30px;
   line-height: 30px;
-  padding-left: 5px
+  padding-left: 5px;
+  overflow: hidden;
 }
 
 .celement {
@@ -104,7 +105,8 @@ export default {
 
 .button {
   width: 90%;
-  text-align: left
+  text-align: left;
+  overflow: hidden;
 }
 
 .button:hover {
@@ -156,7 +158,6 @@ a:hover {
   background-color: #000;
   color: #fff;
   font-weight: 700;
-  padding: 5px
 }
 
 .info p {
