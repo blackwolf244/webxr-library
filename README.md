@@ -22,7 +22,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="left">
-  <a href="https://mygit.th-deg.de/sk20808/webxr-library">
+  <a href="https://github.com/blackwolf244/webxr-library">
     <img src="src/assets/WL-B.svg" alt="Logo" height="80">
   </a>
 
@@ -31,13 +31,11 @@
   <p align="left">
     A representation of my endevours to explore the Development of the WebXR API including it's Frameworks and currrent Issues.
     <br />
-    <a href="https://mygit.th-deg.de/sk20808/webxr-library/-/wikis/home"><strong>Explore the docs »</strong></a>
-    <br />
     <a href="https://webxr-library.web.app/"><strong>Check out the Website »</strong></a>
     <br />
-    <a href="https://mygit.th-deg.de/sk20808/webxr-library/-/issues">Report Bug</a>
+    <a href="https://github.com/blackwolf244/webxr-library/issues">Report Bug</a>
     ·
-    <a href="https://mygit.th-deg.de/sk20808/webxr-library/-/issues">Request Feature</a>
+    <a href="https://github.com/blackwolf244/webxr-library/issues">Request Feature</a>
   </p>
 </div>
 
@@ -68,7 +66,7 @@
 
 ## About The Project
 
-<a href="https://mygit.th-deg.de/sk20808/webxr-library">
+<a href="https://github.com/blackwolf244/webxr-library">
     <img src="images/Screenshot 2023-01-30 092058.png" alt="Logo" width="100%">
   </a>
 
@@ -102,7 +100,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repository
    ```sh
-   git clone https://mygit.th-deg.de/sk20808/webxr-library.git
+   git clone https://github.com/blackwolf244/webxr-library.git
    ```
 2. navigate into the repository
    ```sh
@@ -136,7 +134,7 @@ This Project is supposed to show my findings in the field while being split into
 
 > Prototypes to represent issues and if possible Fix them, or simply to test certain Aspects of the API
 
-See the [open issues](https://mygit.th-deg.de/sk20808/webxr-library/-/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/blackwolf244/webxr-library/issues) for a full list of proposed features (and known issues).
 
 <!-- LICENSE -->
 
