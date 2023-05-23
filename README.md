@@ -70,9 +70,7 @@
     <img src="images/Screenshot 2023-01-30 092058.png" alt="Logo" width="100%">
   </a>
 
-WebXR, or Extended Reality on the Web, has seen rapid growth and development in recent years, with significant potential to impact industries and applications. In this thesis, we explore the current state of WebXR technology, examining its key challenges and opportunities, while investigating its potential future developments and implications for society and industry.
-
-Through a comprehensive review of literature, analysis of existing research, and the development of prototypes, this thesis aims to provide an in-depth evaluation of WebXR, its use, and its role in our future.
+WebXR, or Extended Reality on the Web, has seen rapid growth and development in recent years, with significant potential to impact industries and applications. In this project, i explored the state of WebXR technology in early 2023, examining its key challenges and opportunities, while investigating its potential future developments and implications for society and industry.
 
 ### Built With
 
